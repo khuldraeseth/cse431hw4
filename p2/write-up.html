@@ -1,0 +1,31 @@
+<h1>Write-up</h1>
+<h3>Hypothesis</h3>
+<p>
+    No Tim sort will outperform merge sort—the extra overhead of keeping track of a list's length will hurt performance too much.
+</p>
+
+<h3>Methods</h3>
+<p>
+    The code I used to test these algorithms can be found at <a href="https://github.com/khuldraeseth/cse431hw4">https://github.com/khuldraeseth/cse431hw4</a>. Clone the repository, move into <kbd>p2</kbd>, and <kbd>stack run -- --output wherever-you-want-the-results.html</kbd> to run these tests yourself. Compiles with <kbd>-threaded</kbd>.
+</p>
+<p>
+    For reasons I can't fathom, <a href="https://hackage.haskell.org/package/criterion">Criterion</a> produces a faulty HTML document despite the proper measurements being printed to standard output. <a href="https://github.com/khuldraeseth/cse431hw4">Here</a> is what was printed.
+</p>
+
+<h3>Results</h3>
+<p>
+    Below are three plots of the data from standard output, compared with the results for merge sort and insertion sort from problem 1. No Criterion document this time, unfortunately.
+</p>
+<img src="plot1.png"><br>
+<img src="plot2.png"><br>
+<img src="plot3.png">
+
+<h3>Discussion</h3>
+<p>
+    Some Tim sort outperformed merge sort for lists of lengths between 3 and 100! But no choice of k consistently produced this result, and for sufficiently large lists merge sort has no equal.
+</p>
+
+<h3>Conclusion</h3>
+<p>
+    Under the conditions of this test, increasing k almost monotonically slowed down Tim sort for large lists, with k=1 producing a sort almost as fast as merge sort and k=1000 doing <i>much</i> worse.
+</p>
