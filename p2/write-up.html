@@ -1,7 +1,7 @@
 <h1>Write-up</h1>
 <h3>Hypothesis</h3>
 <p>
-    No Tim sort will outperform merge sort—the extra overhead of keeping track of a list's length will hurt performance too much.
+    No Tim sort will outperform merge sort—the extra overhead of keeping track of a list's length will hurt performance too much, and insertion sort was not much better than merge sort in the last problem even when it was better.
 </p>
 
 <h3>Methods</h3>
@@ -9,7 +9,7 @@
     The code I used to test these algorithms can be found at <a href="https://github.com/khuldraeseth/cse431hw4">https://github.com/khuldraeseth/cse431hw4</a>. Clone the repository, move into <kbd>p2</kbd>, and <kbd>stack run -- --output wherever-you-want-the-results.html</kbd> to run these tests yourself. Compiles with <kbd>-threaded</kbd>.
 </p>
 <p>
-    For reasons I can't fathom, <a href="https://hackage.haskell.org/package/criterion">Criterion</a> produces a faulty HTML document despite the proper measurements being printed to standard output. <a href="https://github.com/khuldraeseth/cse431hw4">Here</a> is what was printed.
+    For reasons I can't fathom, <a href="https://hackage.haskell.org/package/criterion">Criterion</a> produces a faulty HTML document despite the proper measurements being printed to standard output. <a href="https://github.com/khuldraeseth/cse431hw4/blob/master/p2/results">Here</a> is what was printed.
 </p>
 
 <h3>Results</h3>
@@ -23,6 +23,9 @@
 <h3>Discussion</h3>
 <p>
     Some Tim sort outperformed merge sort for lists of lengths between 3 and 100! But no choice of k consistently produced this result, and for sufficiently large lists merge sort has no equal.
+</p>
+<p>
+    I would expect some improvement if I were to approximate list sizes instead of calculating them exactly. This would result in fewer computations per recursive call, and it was established in the first problem that any speedup from switching to insertion sort would be minimal. But I can't be bothered to do that.
 </p>
 
 <h3>Conclusion</h3>
