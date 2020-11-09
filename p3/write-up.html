@@ -1,0 +1,30 @@
+<h1>Write-up</h1>
+
+<h3>Hypothesis</h3>
+<p>
+    The hash set will outperform the ordered set when inserting into a large set. No clue which will be faster for small sets.
+</p>
+
+<h3>Methods</h3>
+<p>
+    The code I used to test these algorithms can be found at <a href="https://github.com/khuldraeseth/cse431hw4">https://github.com/khuldraeseth/cse431hw4</a>. Clone the repository, move into <kbd>p3</kbd>, and <kbd>stack run -- --output wherever-you-want-the-results.html</kbd> to run these tests yourself. Compiles with -threaded. 
+</p>
+<p>
+    I used sets (<a href="https://hackage.haskell.org/package/containers-0.6.4.1/docs/Data-Set.html"><kbd>Data.Set.Set</kbd></a> and <a href="https://hackage.haskell.org/package/unordered-containers-0.2.13.0/docs/Data-HashSet.html"><kbd>Data.HashSet.HashSet</kbd></a>) instead of maps because I saw no reason to do otherwise. I stopped at ten million, before either type of set exceeded three seconds, because of memory and hardware limitations.
+</p>
+
+<h3>Results</h3>
+<p>
+    See below for <a href="https://hackage.haskell.org/package/criterion">Criterion</a> output. The results are summarized in this plot:
+</p>
+<img src="plot.png">
+
+<h3>Discussion</h3>
+<p>
+    The hash set pulls away somewhere between 100 and 1000 items, and the ordered set is never able to catch up. What surprised me is how close the ordered sat managed to stay—I would expect the O(n) hash set to outperform the O(n log n) ordered set by more and more, but this never happened. In fact, the ordered set took less time as a proportion of that taken by the hash set to insert ten million items than to insert one thousand.
+</p>
+
+<h3>Conclusion</h3>
+<p>
+    Under the conditions tested, a hash set could be more quickly filled with at least 100 items than an ordered set.
+</p>
